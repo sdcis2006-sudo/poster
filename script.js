@@ -1,5 +1,5 @@
 /* ==========================================================================
-   POSTER MARKETPLACE - VANILLA JAVASCRIPT APP ENGINE
+   AMAZON-STYLE MOBILE POSTER MARKETPLACE - JAVASCRIPT ENGINE
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,93 +10,124 @@ document.addEventListener('DOMContentLoaded', () => {
   const postersData = [
     {
       id: 'p1',
-      title: 'BATTLE STATION - Cyberpunk 2099',
+      title: 'BATTLE STATION - Cyberpunk 2099 Neon Gaming Poster Art Print',
       category: 'Gaming',
       price: 24.99,
+      originalPrice: 34.99,
+      discount: '-28%',
+      badge: 'Best Seller',
       rating: 4.9,
-      reviews: 142,
+      reviews: 1420,
       image: 'posters/poster1.jpg',
       featured: true,
       description: 'Immerse yourself in the high-tech, low-life universe with this ultra-detailed Cyberpunk Battle Station artwork. High-resolution giclée print on premium satin-finish paper stock.'
     },
     {
       id: 'p2',
-      title: 'NEON VALKYRIE - Horizon',
+      title: 'NEON VALKYRIE - Horizon Futuristic Anime Wall Art Decor',
       category: 'Anime',
       price: 19.99,
+      originalPrice: 26.99,
+      discount: '-25%',
+      badge: 'Overall Pick',
       rating: 4.8,
-      reviews: 98,
+      reviews: 980,
       image: 'posters/poster2.jpg',
       featured: true,
       description: 'Vibrant anime illustration featuring glowing neon aesthetics and futuristic warrior dynamics. Perfect focal accent piece for gaming setups and anime collection rooms.'
     },
     {
       id: 'p3',
-      title: 'DARK CINEMA - Legacy Edition',
+      title: 'DARK CINEMA - Legacy Edition Archival Cinema Movie Poster',
       category: 'Movies',
       price: 22.99,
+      originalPrice: 29.99,
+      discount: '-23%',
+      badge: 'Amazon Choice',
       rating: 4.9,
-      reviews: 210,
+      reviews: 2100,
       image: 'posters/poster3.jpg',
       featured: true,
       description: 'Iconic cinematic poster capturing dramatic contrast and mood. Printed on archival 250gsm museum-grade heavyweight poster paper.'
     },
     {
       id: 'p4',
-      title: 'MATCHDAY LEGEND - Golden Edition',
+      title: 'MATCHDAY LEGEND - Golden Edition Sports Stadium Art Print',
       category: 'Football',
       price: 18.99,
+      originalPrice: 24.99,
+      discount: '-24%',
+      badge: '#1 Trending',
       rating: 4.7,
-      reviews: 76,
+      reviews: 760,
       image: 'posters/poster4.jpg',
       featured: false,
       description: 'Celebrate football passion and glory with this dynamic sports art poster. Features energetic stadium lighting and bold painterly brushwork.'
     },
     {
       id: 'p5',
-      title: 'FRESHERS FESTIVAL - Underground Sound',
+      title: 'FRESHERS FESTIVAL - Underground Sound Concert Event Poster',
       category: 'Music',
       price: 21.99,
+      originalPrice: 28.99,
+      discount: '-24%',
+      badge: 'Popular Pick',
       rating: 4.8,
-      reviews: 84,
+      reviews: 840,
       image: 'posters/poster5.jpg',
       featured: false,
       description: 'Electric concert event poster featuring expressive typographical artwork and vibrant color contrasts. A stylish statement piece for music lovers.'
     },
     {
       id: 'p6',
-      title: 'ETHEREAL ABSTRACT - Studio Edition',
+      title: 'ETHEREAL ABSTRACT - Studio Edition Fine Art Wall Decor',
       category: 'Art',
       price: 26.99,
+      originalPrice: 35.99,
+      discount: '-25%',
+      badge: 'Top Rated',
       rating: 4.9,
-      reviews: 115,
+      reviews: 1150,
       image: 'posters/poster6.jpg',
       featured: false,
       description: 'Contemporary abstract canvas composition with rich textures and modern neutral tones. Adds sophisticated artistic flair to modern living spaces.'
     },
     {
       id: 'p7',
-      title: 'RETRO WAVE - Sunset Boulevard',
+      title: 'RETRO WAVE - Sunset Boulevard 80s Synthwave Anime Poster',
       category: 'Anime',
       price: 20.99,
+      originalPrice: 27.99,
+      discount: '-25%',
+      badge: 'Best Seller',
       rating: 4.8,
-      reviews: 130,
+      reviews: 1300,
       image: 'posters/poster7.jpg',
       featured: false,
       description: 'Nostalgic 80s synthwave anime aesthetic poster. Features glowing digital grids, palm silhouettes, and iconic retro neon color gradients.'
     },
     {
       id: 'p8',
-      title: 'UNIVERSE: SCI-FI CELESTIAL ARTWORK',
+      title: 'UNIVERSE: SCI-FI CELESTIAL ARTWORK (Limited Collector Edition)',
       category: 'Sci-Fi',
       price: 34.99,
+      originalPrice: 45.00,
+      discount: '-22%',
+      badge: 'Collector Choice',
       rating: 5.0,
-      reviews: 320,
+      reviews: 3200,
       image: 'posters/poster8.jpg',
-      isSpecial: true,
+      featured: true,
       description: '✨ SPECIAL LIMITED COLLECTOR EDITION ✨ Breathtaking cosmic artwork depicting deep space nebulae, celestial magic, and sci-fi grandeur. Printed with metallic sheen foil accents.'
     }
   ];
+
+  // Initialize with all posters revealed except the last-but-one (penultimate) poster
+  const revealedPostersSet = new Set(
+    postersData
+      .filter((_, index) => index !== postersData.length - 2)
+      .map(p => p.id)
+  );
 
   // ========================================================================
   // 2. STATE MANAGEMENT & LOCAL STORAGE
@@ -105,12 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let searchQuery = '';
   let activeDetailPoster = null;
   let detailQuantity = 1;
-  let isSpecialRevealed = false;
   let activeCheckoutItems = [];
 
-  // Load Cart from localStorage
   let cart = JSON.parse(localStorage.getItem('poster_cart_data')) || [];
-  // Load Order History from localStorage
   let orderHistory = JSON.parse(localStorage.getItem('poster_order_history')) || [];
 
   function saveCart() {
@@ -122,6 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('poster_order_history', JSON.stringify(orderHistory));
   }
 
+  function getStarString(rating) {
+    const fullStars = Math.floor(rating);
+    let stars = '★'.repeat(fullStars);
+    if (rating % 1 !== 0) stars += '★';
+    return stars;
+  }
+
   // ========================================================================
   // 3. UI RENDERING ENGINES
   // ========================================================================
@@ -131,30 +166,37 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderFeaturedPosters() {
     if (!featuredCarousel) return;
     const featuredItems = postersData.filter(p => p.featured);
-    featuredCarousel.innerHTML = featuredItems.map(poster => `
-      <div class="featured-card" data-id="${poster.id}">
-        <img src="${poster.image}" alt="${poster.title}" class="featured-img" loading="lazy">
-        <span class="featured-pill">${poster.category}</span>
-        <div class="featured-overlay">
-          <h3 class="featured-card-title">${poster.title}</h3>
-          <div class="featured-meta">
-            <span class="featured-price">$${poster.price.toFixed(2)}</span>
-            <span class="featured-rating">★ ${poster.rating}</span>
+    featuredCarousel.innerHTML = featuredItems.map(poster => {
+      const isRevealed = revealedPostersSet.has(poster.id);
+      return `
+        <div class="featured-card" data-id="${poster.id}">
+          <img src="${poster.image}" alt="${poster.title}" class="featured-img ${isRevealed ? '' : 'card-blurred'}" loading="lazy">
+          <span class="amazon-choice-badge">${poster.badge}</span>
+          ${!isRevealed ? `
+            <div class="card-blur-overlay">
+              <div class="card-lock-badge">🔒</div>
+              <span class="card-blur-text">Tap to Reveal</span>
+            </div>
+          ` : ''}
+          <div class="featured-overlay">
+            <h3 class="featured-card-title">${poster.title}</h3>
+            <div class="featured-meta">
+              <span class="featured-price">$${poster.price.toFixed(2)}</span>
+              <span class="rating-val" style="color:var(--amazon-orange); font-size:0.75rem;">★ ${poster.rating}</span>
+            </div>
           </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
-    // Attach click listeners
     featuredCarousel.querySelectorAll('.featured-card').forEach(card => {
       card.addEventListener('click', () => {
-        const id = card.dataset.id;
-        openPosterDetails(id);
+        handlePosterTap(card.dataset.id);
       });
     });
   }
 
-  // Render Main Poster Grid
+  // Render Main Poster Grid (Single-Column Vertical Feed)
   const posterGrid = document.getElementById('poster-grid');
   const resultsCount = document.getElementById('results-count');
   const emptyState = document.getElementById('empty-state');
@@ -162,10 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderPosterGrid() {
     if (!posterGrid) return;
 
-    // Filter normal posters (excluding special poster from standard grid to keep special section exclusive)
     const filtered = postersData.filter(poster => {
-      if (poster.isSpecial) return false;
-      const matchesCategory = (activeCategory === 'All' || poster.category.toLowerCase() === activeCategory.toLowerCase());
+      const matchesCategory = (activeCategory === 'All' || 
+                               (activeCategory === 'Best Sellers' && (poster.badge === 'Best Seller' || poster.badge === 'Overall Pick' || poster.badge === 'Collector Choice')) ||
+                               poster.category.toLowerCase() === activeCategory.toLowerCase());
       const matchesSearch = poster.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             poster.category.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
@@ -177,170 +219,89 @@ document.addEventListener('DOMContentLoaded', () => {
       posterGrid.style.display = 'none';
       emptyState.classList.remove('hidden');
     } else {
-      posterGrid.style.display = 'grid';
+      posterGrid.style.display = 'flex';
       emptyState.classList.add('hidden');
 
-      posterGrid.innerHTML = filtered.map(poster => `
-        <div class="poster-card" data-id="${poster.id}">
-          <div class="poster-thumb-container">
-            <img src="${poster.image}" alt="${poster.title}" class="poster-thumb" loading="lazy">
-            <span class="poster-badge">${poster.category}</span>
-            <button class="quick-add-btn" data-id="${poster.id}" title="Add to Cart" aria-label="Add to cart">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            </button>
-          </div>
-          <div class="poster-details">
-            <h3 class="poster-title">${poster.title}</h3>
-            <div class="poster-meta-row">
-              <span class="poster-price">$${poster.price.toFixed(2)}</span>
-              <span class="poster-rating">★ ${poster.rating}</span>
+      posterGrid.innerHTML = filtered.map(poster => {
+        const isRevealed = revealedPostersSet.has(poster.id);
+
+        return `
+          <div class="poster-card" data-id="${poster.id}">
+            <div class="poster-thumb-container">
+              <img src="${poster.image}" alt="${poster.title}" class="poster-thumb ${isRevealed ? '' : 'card-blurred'}" loading="lazy">
+              <span class="amazon-tag-pill">${poster.badge}</span>
+              ${!isRevealed ? `
+                <div class="card-blur-overlay">
+                  <div class="card-lock-badge">🔒</div>
+                  <span class="card-blur-text">Tap to Reveal</span>
+                </div>
+              ` : ''}
+            </div>
+            <div class="poster-details">
+              <h3 class="poster-title">${poster.title}</h3>
+              
+              <div class="rating-row">
+                <span class="stars">${getStarString(poster.rating)}</span>
+                <span class="rating-val">${poster.rating}</span>
+                <span class="review-count">(${poster.reviews > 1000 ? (poster.reviews / 1000).toFixed(1) + 'k' : poster.reviews})</span>
+              </div>
+
+              <div class="price-block">
+                <div class="price-row">
+                  <span class="deal-badge">${poster.discount}</span>
+                  <span class="current-price">$${poster.price.toFixed(2)}</span>
+                </div>
+                <div class="list-price-row">List: <span class="old-price">$${poster.originalPrice.toFixed(2)}</span></div>
+                <div class="prime-delivery-text">✓ <b>FREE One-Day Delivery</b></div>
+              </div>
+
+              <button class="btn-amazon-yellow add-to-cart-quick-btn" data-id="${poster.id}">
+                <span>Add to Cart</span>
+              </button>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
-      // Card click handlers
       posterGrid.querySelectorAll('.poster-card').forEach(card => {
         card.addEventListener('click', (e) => {
-          if (e.target.closest('.quick-add-btn')) return; // Quick add button handled separately
-          const id = card.dataset.id;
-          openPosterDetails(id);
+          if (e.target.closest('.add-to-cart-quick-btn')) return;
+          handlePosterTap(card.dataset.id);
         });
       });
 
-      // Quick add handlers
-      posterGrid.querySelectorAll('.quick-add-btn').forEach(btn => {
+      posterGrid.querySelectorAll('.add-to-cart-quick-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const id = btn.dataset.id;
-          addToCart(id, 1);
+          const posterId = btn.dataset.id;
+          revealedPostersSet.add(posterId);
+          renderPosterGrid();
+          renderFeaturedPosters();
+          addToCart(posterId, 1);
         });
       });
     }
   }
 
-  // ========================================================================
-  // 4. SPECIAL POSTER REVEAL CONTROLLER & ANIMATION
-  // ========================================================================
-
-  const specialRevealCard = document.getElementById('special-reveal-card');
-  const specialPosterImg = document.getElementById('special-poster-img');
-  const specialOverlay = document.getElementById('special-overlay');
-  const specialContent = document.getElementById('special-content');
-  const buySpecialBtn = document.getElementById('buy-special-btn');
-  const revealCanvas = document.getElementById('reveal-canvas');
-
-  function initSpecialReveal() {
-    if (!specialOverlay) return;
-
-    specialOverlay.addEventListener('click', triggerPosterReveal);
-    specialPosterImg.addEventListener('click', triggerPosterReveal);
-
-    if (buySpecialBtn) {
-      buySpecialBtn.addEventListener('click', () => {
-        const specialPoster = postersData.find(p => p.isSpecial);
-        if (specialPoster) {
-          startCheckout([ { poster: specialPoster, quantity: 1 } ]);
-        }
-      });
+  function handlePosterTap(posterId) {
+    const isAlreadyRevealed = revealedPostersSet.has(posterId);
+    if (!isAlreadyRevealed) {
+      revealedPostersSet.add(posterId);
+      renderPosterGrid();
+      renderFeaturedPosters();
+      showToast('✨ Poster Artwork Unlocked!');
+    } else {
+      openPosterDetails(posterId);
     }
   }
 
-  function triggerPosterReveal() {
-    if (isSpecialRevealed) return;
-    isSpecialRevealed = true;
-
-    // 1. Blur smoothly disappears & poster zooms slightly
-    specialPosterImg.classList.remove('blurred');
-
-    // 2. Overlay fades away
-    specialOverlay.classList.add('hidden-overlay');
-
-    // 3. Play spark/confetti particle reveal animation
-    playSparkleCanvasAnimation();
-
-    // 4. Reveal content details & Buy Now button smoothly
-    setTimeout(() => {
-      specialContent.classList.remove('hidden');
-      showToast('✨ Special Collector Poster Unlocked!');
-    }, 400);
-  }
-
-  // Sparkle / Confetti Particle Reveal Animation on Canvas
-  function playSparkleCanvasAnimation() {
-    if (!revealCanvas) return;
-    const ctx = revealCanvas.getContext('2d');
-    const width = revealCanvas.width = specialRevealCard.clientWidth;
-    const height = revealCanvas.height = specialRevealCard.clientHeight;
-
-    const particles = [];
-    const colors = ['#7928ca', '#ff0080', '#6366f1', '#f59e0b', '#ffffff', '#10b981'];
-
-    for (let i = 0; i < 70; i++) {
-      particles.push({
-        x: width / 2,
-        y: height / 2,
-        vx: (Math.random() - 0.5) * 12,
-        vy: (Math.random() - 0.5) * 12,
-        size: Math.random() * 5 + 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: 1,
-        life: Math.random() * 40 + 30
-      });
-    }
-
-    let animationFrame;
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      let aliveCount = 0;
-
-      particles.forEach(p => {
-        if (p.alpha > 0) {
-          aliveCount++;
-          p.x += p.vx;
-          p.y += p.vy;
-          p.vy += 0.15; // Gravity effect
-          p.alpha -= 1 / p.life;
-
-          ctx.save();
-          ctx.globalAlpha = Math.max(0, p.alpha);
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        }
-      });
-
-      if (aliveCount > 0) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        ctx.clearRect(0, 0, width, height);
-        cancelAnimationFrame(animationFrame);
-      }
-    }
-    animate();
-  }
-
   // ========================================================================
-  // 5. SEARCH & CATEGORY LISTENERS
+  // 4. SEARCH & CATEGORY LISTENERS
   // ========================================================================
 
-  // Search Toggle Header Button
-  const toggleSearchBtn = document.getElementById('toggle-search-btn');
-  const searchBarWrapper = document.getElementById('search-bar-wrapper');
   const searchInput = document.getElementById('search-input');
   const clearSearchBtn = document.getElementById('clear-search-btn');
   const resetSearchBtn = document.getElementById('reset-search-btn');
-
-  if (toggleSearchBtn && searchBarWrapper) {
-    toggleSearchBtn.addEventListener('click', () => {
-      searchBarWrapper.classList.toggle('open');
-      if (searchBarWrapper.classList.contains('open')) {
-        searchInput.focus();
-      }
-    });
-  }
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -375,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Category Pills
   const categoryPills = document.querySelectorAll('.category-pill');
   categoryPills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -396,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================================
-  // 6. POSTER DETAILS BOTTOM-SHEET MODAL
+  // 5. POSTER DETAILS MODAL
   // ========================================================================
 
   const detailBackdrop = document.getElementById('detail-backdrop');
@@ -404,8 +364,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const detailImg = document.getElementById('detail-img');
   const detailTitle = document.getElementById('detail-title');
   const detailCategory = document.getElementById('detail-category');
-  const detailRating = document.getElementById('detail-rating');
+  const detailStars = document.getElementById('detail-stars');
+  const detailRatingVal = document.getElementById('detail-rating-val');
+  const detailReviews = document.getElementById('detail-reviews');
+  const detailDealBadge = document.getElementById('detail-deal-badge');
   const detailPrice = document.getElementById('detail-price');
+  const detailOldPrice = document.getElementById('detail-old-price');
   const detailDesc = document.getElementById('detail-desc');
   const qtyValue = document.getElementById('qty-value');
   const qtyMinus = document.getElementById('qty-minus');
@@ -423,7 +387,11 @@ document.addEventListener('DOMContentLoaded', () => {
     detailImg.src = poster.image;
     detailTitle.textContent = poster.title;
     detailCategory.textContent = poster.category;
-    detailRating.textContent = `★ ${poster.rating} (${poster.reviews} reviews)`;
+    detailStars.textContent = getStarString(poster.rating);
+    detailRatingVal.textContent = poster.rating;
+    detailReviews.textContent = `(${poster.reviews} ratings)`;
+    detailDealBadge.textContent = poster.discount || '-25%';
+    detailOldPrice.textContent = `$${(poster.originalPrice || poster.price * 1.3).toFixed(2)}`;
     detailDesc.textContent = poster.description;
     qtyValue.textContent = detailQuantity;
     updateDetailPrice();
@@ -488,25 +456,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================================
-  // 7. CART ENGINE & STORAGE
+  // 6. CART ENGINE
   // ========================================================================
 
   function addToCart(posterId, qty = 1) {
     const poster = postersData.find(p => p.id === posterId);
     if (!poster) return;
 
+    revealedPostersSet.add(posterId);
+
     const existingIndex = cart.findIndex(item => item.id === posterId);
     if (existingIndex > -1) {
       cart[existingIndex].quantity += qty;
     } else {
-      cart.push({
-        id: poster.id,
-        quantity: qty
-      });
+      cart.push({ id: poster.id, quantity: qty });
     }
 
     saveCart();
-    showToast(`Added ${qty}x "${poster.title}" to cart! 🛒`);
+    showToast(`Added ${qty}x "${poster.title.slice(0, 18)}..." to Cart 🛒`);
   }
 
   function updateCartQuantity(posterId, delta) {
@@ -525,13 +492,14 @@ document.addEventListener('DOMContentLoaded', () => {
     cart = cart.filter(i => i.id !== posterId);
     saveCart();
     renderCartSheet();
-    showToast('Item removed from cart');
+    showToast('Item removed from Amazon Cart');
   }
 
   function updateCartBadges() {
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const cartBadge = document.getElementById('cart-badge');
     const navCartBadge = document.getElementById('nav-cart-badge');
+    const desktopCartBadge = document.getElementById('desktop-cart-badge');
 
     if (cartBadge) {
       cartBadge.textContent = totalCount;
@@ -539,9 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => cartBadge.style.transform = 'scale(1)', 200);
     }
     if (navCartBadge) navCartBadge.textContent = totalCount;
+    if (desktopCartBadge) desktopCartBadge.textContent = totalCount;
   }
 
-  // Cart Sheet Modal Controls
   const cartBackdrop = document.getElementById('cart-backdrop');
   const openCartBtn = document.getElementById('open-cart-btn');
   const closeCartBtn = document.getElementById('close-cart-btn');
@@ -605,7 +573,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       cartGrandTotal.textContent = `$${grandTotal.toFixed(2)}`;
 
-      // Attach item quantity & remove listeners
       cartItemsList.querySelectorAll('.cart-qty-minus').forEach(btn => {
         btn.addEventListener('click', () => updateCartQuantity(btn.dataset.id, -1));
       });
@@ -635,12 +602,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }).filter(i => i.poster);
 
       closeCartSheet();
-      startCheckout(checkoutList, true); // true = from cart checkout
+      startCheckout(checkoutList, true);
     });
   }
 
   // ========================================================================
-  // 8. BUY FLOW & ORDER CONFIRMATION
+  // 7. BUY FLOW & ORDER CONFIRMATION WITH BIG POSTER DISPLAY
   // ========================================================================
 
   const checkoutBackdrop = document.getElementById('checkout-backdrop');
@@ -653,11 +620,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmOrderBtn = document.getElementById('confirm-order-btn');
   const continueShoppingBtn = document.getElementById('continue-shopping-btn');
 
-  // Order Confirmed fields
   const confirmedOrderId = document.getElementById('confirmed-order-id');
   const confirmedPosterName = document.getElementById('confirmed-poster-name');
   const confirmedTotal = document.getElementById('confirmed-total');
   const confirmedDelivery = document.getElementById('confirmed-delivery');
+  const confirmedLargeImg = document.getElementById('confirmed-large-img');
 
   let isCartCheckoutSource = false;
 
@@ -665,7 +632,6 @@ document.addEventListener('DOMContentLoaded', () => {
     activeCheckoutItems = itemsArray;
     isCartCheckoutSource = fromCart;
 
-    // Reset view to stage 1 summary
     checkoutStageSummary.classList.remove('hidden');
     checkoutStageConfirmed.classList.add('hidden');
 
@@ -704,26 +670,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (confirmOrderBtn) {
     confirmOrderBtn.addEventListener('click', () => {
-      // Generate random mock order ID
       const randomID = '#PST-' + Math.floor(100000 + Math.random() * 900000);
       const totalAmount = activeCheckoutItems.reduce((sum, i) => sum + (i.poster.price * i.quantity), 0);
 
-      // Estimated delivery date (3-5 days from now)
-      const now = new Date();
-      const del1 = new Date(now.setDate(now.getDate() + 3));
-      const del2 = new Date(now.setDate(now.getDate() + 2));
-      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      const delStr = `${monthNames[del1.getMonth()]} ${del1.getDate()} - ${monthNames[del2.getMonth()]} ${del2.getDate()}`;
-
-      // Populate stage 2 details
       confirmedOrderId.textContent = randomID;
       confirmedPosterName.textContent = activeCheckoutItems.length === 1 ? 
         activeCheckoutItems[0].poster.title : 
         `${activeCheckoutItems[0].poster.title} + ${activeCheckoutItems.length - 1} more`;
       confirmedTotal.textContent = `$${totalAmount.toFixed(2)}`;
-      confirmedDelivery.textContent = delStr;
+      confirmedDelivery.textContent = 'Tomorrow by 8:00 PM';
 
-      // Save order to history
+      if (activeCheckoutItems.length > 0 && confirmedLargeImg) {
+        confirmedLargeImg.src = activeCheckoutItems[0].poster.image;
+        revealedPostersSet.add(activeCheckoutItems[0].poster.id);
+        renderPosterGrid();
+        renderFeaturedPosters();
+      }
+
       orderHistory.unshift({
         id: randomID,
         itemTitle: confirmedPosterName.textContent,
@@ -732,26 +695,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       saveOrderHistory();
 
-      // If checkout came from cart, clear cart
       if (isCartCheckoutSource) {
         cart = [];
         saveCart();
       }
 
-      // Switch stage
       checkoutStageSummary.classList.add('hidden');
       checkoutStageConfirmed.classList.remove('hidden');
     });
   }
 
   if (continueShoppingBtn) {
-    continueShoppingBtn.addEventListener('click', () => {
-      closeCheckout();
-    });
+    continueShoppingBtn.addEventListener('click', closeCheckout);
   }
 
   // ========================================================================
-  // 9. PROFILE & ORDER HISTORY MODAL
+  // 8. PROFILE & ORDER HISTORY MODAL
   // ========================================================================
 
   const profileBackdrop = document.getElementById('profile-backdrop');
@@ -772,15 +731,15 @@ document.addEventListener('DOMContentLoaded', () => {
     statOrdersCount.textContent = orderHistory.length;
 
     if (orderHistory.length === 0) {
-      orderHistoryList.innerHTML = `<p style="font-size:0.75rem; color:var(--text-dim); text-align:center; padding:10px;">No previous order history yet.</p>`;
+      orderHistoryList.innerHTML = `<p style="font-size:0.75rem; color:var(--text-dim); text-align:center; padding:10px;">No recent Amazon orders.</p>`;
     } else {
       orderHistoryList.innerHTML = orderHistory.map(order => `
         <div class="history-card">
           <div>
             <span class="history-id">${order.id}</span>
-            <div style="font-size:0.75rem; font-weight:600; color:var(--text-main); margin-top:2px;">${order.itemTitle}</div>
+            <div style="font-size:0.72rem; font-weight:600; color:#fff; margin-top:2px;">${order.itemTitle}</div>
           </div>
-          <span style="font-weight:700; color:#10b981;">${order.total}</span>
+          <span style="font-weight:800; color:var(--amazon-orange);">${order.total}</span>
         </div>
       `).join('');
     }
@@ -794,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================================
-  // 10. BOTTOM NAVIGATION ENGINE
+  // 9. BOTTOM NAVIGATION ENGINE
   // ========================================================================
 
   const navItems = document.querySelectorAll('.nav-item');
@@ -810,7 +769,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetNav === 'home') {
         appContent.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (targetNav === 'search') {
-        searchBarWrapper.classList.add('open');
         searchInput.focus();
         appContent.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (targetNav === 'posters') {
@@ -827,7 +785,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Logo button scrolls to top
   const logoBtn = document.getElementById('logo-btn');
   if (logoBtn) {
     logoBtn.addEventListener('click', (e) => {
@@ -837,7 +794,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================================
-  // 11. TOAST NOTIFICATION UTILITY
+  // 10. TOAST NOTIFICATION UTILITY
   // ========================================================================
 
   const toastContainer = document.getElementById('toast-container');
@@ -855,12 +812,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 
-  // ========================================================================
-  // INITIALIZATION
-  // ========================================================================
+  // Initialization
   renderFeaturedPosters();
   renderPosterGrid();
-  initSpecialReveal();
   updateCartBadges();
 
 });

@@ -1,36 +1,48 @@
+5
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POSTER - Premium Mobile Poster Marketplace</title>
-  <meta name="description" content="Discover and collect premium artwork, anime, movie, and gaming posters in a sleek mobile marketplace experience.">
+  <title>POSTER - Amazon-Style Mobile Poster Marketplace</title>
+  <meta name="description"
+    content="Tap to unlock blurred artwork, collect rare poster prints, and view big order confirmation displays.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- Outer Desktop Ambient Wrapper -->
   <div class="desktop-background">
-    
-    <!-- Desktop Background Decorative Elements -->
+
+    <!-- Background Glow Blobs -->
     <div class="bg-blur-circle circle-1"></div>
     <div class="bg-blur-circle circle-2"></div>
-    
+
     <!-- Smartphone Shell Container -->
     <div class="phone-wrapper">
-      
-      <!-- Phone Frame Elements (Notch, Side Buttons) -->
+
+      <!-- Phone Frame Notch Bar -->
       <div class="phone-notch">
         <span class="notch-time">9:41</span>
         <div class="notch-island">
           <span class="camera-lens"></span>
         </div>
         <div class="notch-icons">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.2 19.56 10.56 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.2 19.56 10.56 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" />
+          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+          </svg>
         </div>
       </div>
 
@@ -39,27 +51,87 @@
 
         <!-- Header -->
         <header class="app-header">
-          <div class="header-main">
-            <a href="#" class="brand-logo" id="logo-btn">
-              <span class="brand-accent">POS</span>TER
-            </a>
-            <div class="header-actions">
-              <button class="icon-btn" id="toggle-search-btn" aria-label="Toggle Search">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              </button>
-              <button class="icon-btn cart-btn-header" id="open-cart-btn" aria-label="Open Cart">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                <span class="cart-badge" id="cart-badge">0</span>
-              </button>
-            </div>
-          </div>
+          <div class="header-inner">
+            <div class="header-left">
+              <a href="#" class="brand-logo" id="logo-btn">
+                <span class="brand-text">poster</span><span class="brand-smile">.com</span>
+              </a>
 
-          <!-- Integrated Search Bar -->
-          <div class="search-bar-wrapper" id="search-bar-wrapper">
-            <div class="search-input-box">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" id="search-input" placeholder="Search posters, movies, anime..." autocomplete="off">
-              <button class="clear-search-btn" id="clear-search-btn" aria-label="Clear Search">&times;</button>
+              <div class="header-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#febd69" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Deliver to <b>Express</b></span>
+              </div>
+            </div>
+
+            <!-- Prominent Search Bar -->
+            <div class="amazon-search-bar">
+              <div class="search-input-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#131921" stroke-width="2.5"
+                  class="search-icon">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search Posters (Tap any card to unlock)..."
+                  autocomplete="off">
+                <button class="clear-search-btn" id="clear-search-btn" aria-label="Clear Search">&times;</button>
+                <button class="search-submit-btn" aria-label="Submit search">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#131921" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <button class="cart-btn-header mobile-cart-btn" id="open-cart-btn" aria-label="Open Cart">
+              <div class="cart-icon-wrapper">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-badge" id="cart-badge">0</span>
+              </div>
+            </button>
+
+            <!-- Desktop Header Nav Bar -->
+            <div class="desktop-header-nav">
+              <button class="desktop-nav-item nav-item active" data-nav="home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+              </button>
+              <button class="desktop-nav-item nav-item" data-nav="posters">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span>Posters</span>
+              </button>
+              <button class="desktop-nav-item nav-item" data-nav="cart" id="desktop-cart-nav">
+                <div class="nav-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                  <span class="desktop-cart-badge" id="desktop-cart-badge">0</span>
+                </div>
+                <span>Cart</span>
+              </button>
+              <button class="desktop-nav-item nav-item" data-nav="profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 4-4H8a4 4 0 0 4-4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Account</span>
+              </button>
             </div>
           </div>
         </header>
@@ -67,21 +139,20 @@
         <!-- Main Scrollable Content Area -->
         <main class="app-content" id="app-content">
 
-          <!-- Featured Showcase Section -->
-          <section class="section-featured" id="featured-section">
-            <div class="section-header">
-              <h2 class="section-title">🔥 Trending Now</h2>
-              <span class="section-tag">Featured Collection</span>
+          <!-- Hero Banner -->
+          <div class="amazon-hero-banner">
+            <div class="banner-content">
+              <span class="banner-tag">🔒 MYSTERY MARKETPLACE</span>
+              <h2 class="banner-title">Tap Any Poster Card to Unblur</h2>
+              <span class="banner-sub">Confirm order to view your poster in BIG size!</span>
             </div>
-            <div class="featured-carousel" id="featured-carousel">
-              <!-- Dynamically populated featured cards -->
-            </div>
-          </section>
+          </div>
 
-          <!-- Categories Horizontal Filter -->
+          <!-- Categories Scroll Bar -->
           <section class="section-categories">
             <div class="categories-scroll" id="categories-scroll">
-              <button class="category-pill active" data-category="All">All</button>
+              <button class="category-pill active" data-category="All">All Posters</button>
+              <button class="category-pill" data-category="Best Sellers">🔥 Best Sellers</button>
               <button class="category-pill" data-category="Movies">Movies</button>
               <button class="category-pill" data-category="Anime">Anime</button>
               <button class="category-pill" data-category="Gaming">Gaming</button>
@@ -92,9 +163,20 @@
             </div>
           </section>
 
-          <!-- Poster Grid Section -->
+          <!-- Featured Amazon Carousel -->
+          <section class="section-featured" id="featured-section">
+            <div class="amazon-section-header">
+              <h2 class="section-title">Trending Choice Posters</h2>
+              <span class="see-all-link">Tap to Reveal</span>
+            </div>
+            <div class="featured-carousel" id="featured-carousel">
+              <!-- Dynamically populated featured cards -->
+            </div>
+          </section>
+
+          <!-- Main Amazon Product Grid -->
           <section class="section-marketplace">
-            <div class="section-header">
+            <div class="amazon-section-header">
               <h2 class="section-title" id="grid-title">All Artwork Posters</h2>
               <span class="results-count" id="results-count">8 Posters</span>
             </div>
@@ -102,92 +184,63 @@
             <!-- Empty Search State -->
             <div class="empty-state hidden" id="empty-state">
               <div class="empty-icon">🔍</div>
-              <h3>No posters found</h3>
-              <p>We couldn't find any posters matching your search. Try another keyword or browse categories.</p>
-              <button class="btn-secondary" id="reset-search-btn">Reset Search</button>
+              <h3>No matching posters found</h3>
+              <p>Try checking your spelling or search for movies, anime, or gaming artwork.</p>
+              <button class="btn-amazon-yellow" id="reset-search-btn">Clear Search Filter</button>
             </div>
 
-            <!-- 2-Column Poster Grid -->
+            <!-- Amazon Product 1-Column Grid -->
             <div class="poster-grid" id="poster-grid">
-              <!-- Dynamically rendered poster cards -->
+              <!-- Dynamically rendered Amazon-style cards -->
             </div>
           </section>
 
-          <!-- SPECIAL POSTER REVEAL SECTION -->
-          <section class="section-special-reveal">
-            <div class="reveal-header">
-              <span class="reveal-badge">✨ MYSTERY DROP</span>
-              <h2 class="reveal-heading">Something special is waiting...</h2>
-              <p class="reveal-sub">Tap below to unlock a rare limited edition collector poster.</p>
-            </div>
-
-            <div class="special-card-wrapper" id="special-reveal-card">
-              <!-- Particle canvas for reveal effect -->
-              <canvas id="reveal-canvas" class="reveal-canvas"></canvas>
-
-              <div class="special-card">
-                <div class="special-image-container">
-                  <img src="posters/poster8.jpg" alt="Special Secret Poster" class="special-poster-img blurred" id="special-poster-img">
-                  <div class="special-overlay" id="special-overlay">
-                    <div class="lock-circle" id="special-lock-circle">
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    </div>
-                    <span class="overlay-text" id="special-overlay-text">TAP TO REVEAL</span>
-                    <span class="overlay-hint">Collector Edition Artwork</span>
-                  </div>
-                </div>
-
-                <div class="special-content hidden" id="special-content">
-                  <div class="special-meta">
-                    <span class="special-tag">🌌 ULTRA RARE DROP</span>
-                    <span class="special-rating">★ 5.0 (Collector's Choice)</span>
-                  </div>
-                  <h3 class="special-title">UNIVERSE: SCI-FI CELESTIAL ARTWORK</h3>
-                  <p class="special-desc">An extraordinary cosmic masterpiece with metallic sheen highlights, printed on archival heavyweight paper.</p>
-                  <div class="special-footer">
-                    <div class="special-price-box">
-                      <span class="price-label">Collector Price</span>
-                      <span class="special-price">$34.99</span>
-                    </div>
-                    <button class="btn-primary buy-special-btn" id="buy-special-btn">
-                      <span>BUY NOW</span>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Extra Space for Fixed Bottom Nav -->
+          <!-- Bottom Nav Spacer -->
           <div class="bottom-spacer"></div>
 
         </main>
 
-        <!-- FIXED BOTTOM NAVIGATION BAR -->
+        <!-- BOTTOM NAVIGATION BAR -->
         <nav class="bottom-nav">
           <button class="nav-item active" data-nav="home" id="nav-home">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
             <span>Home</span>
           </button>
           <button class="nav-item" data-nav="search" id="nav-search">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
             <span>Search</span>
           </button>
           <button class="nav-item" data-nav="posters" id="nav-posters">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
             <span>Posters</span>
           </button>
           <button class="nav-item nav-cart-item" data-nav="cart" id="nav-cart">
             <div class="nav-icon-box">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
               <span class="nav-cart-badge" id="nav-cart-badge">0</span>
             </div>
             <span>Cart</span>
           </button>
           <button class="nav-item" data-nav="profile" id="nav-profile">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <span>Profile</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>You</span>
           </button>
         </nav>
 
@@ -196,7 +249,7 @@
           <div class="bottom-sheet" id="detail-sheet">
             <div class="sheet-drag-handle"></div>
             <button class="sheet-close-btn" id="close-detail-btn" aria-label="Close modal">&times;</button>
-            
+
             <div class="sheet-content">
               <div class="detail-image-box">
                 <img src="" alt="Poster Details" id="detail-img">
@@ -204,23 +257,26 @@
               </div>
 
               <div class="detail-info-box">
-                <div class="detail-header-row">
-                  <h2 class="detail-title" id="detail-title">Poster Title</h2>
-                  <div class="detail-rating-pill" id="detail-rating">★ 4.9</div>
+                <div class="amazon-choice-tag">Amazon's Choice</div>
+                <h2 class="detail-title" id="detail-title">Poster Title</h2>
+
+                <div class="rating-row">
+                  <span class="stars" id="detail-stars">★★★★★</span>
+                  <span class="rating-val" id="detail-rating-val">4.9</span>
+                  <span class="review-count" id="detail-reviews">(142 ratings)</span>
+                </div>
+
+                <div class="price-block detail-price-block">
+                  <div class="price-row">
+                    <span class="deal-badge" id="detail-deal-badge">-25%</span>
+                    <span class="current-price" id="detail-price">$24.99</span>
+                  </div>
+                  <div class="list-price-row">List Price: <span class="old-price" id="detail-old-price">$32.99</span>
+                  </div>
+                  <div class="prime-delivery-text">✓ <b>FREE Delivery Tomorrow</b></div>
                 </div>
 
                 <p class="detail-description" id="detail-desc">Poster description details...</p>
-                
-                <div class="detail-specs">
-                  <div class="spec-item">
-                    <span class="spec-label">Print Size</span>
-                    <span class="spec-val">18" x 24" (Premium)</span>
-                  </div>
-                  <div class="spec-item">
-                    <span class="spec-label">Paper Finish</span>
-                    <span class="spec-val">Satin Matte Giclée</span>
-                  </div>
-                </div>
 
                 <div class="quantity-row">
                   <span class="qty-label">Quantity:</span>
@@ -229,19 +285,14 @@
                     <span class="qty-val" id="qty-value">1</span>
                     <button class="qty-btn" id="qty-plus">+</button>
                   </div>
-                  <div class="detail-total-price">
-                    <span class="unit-price-label">Price:</span>
-                    <span class="price-val" id="detail-price">$24.99</span>
-                  </div>
                 </div>
 
                 <div class="detail-action-buttons">
-                  <button class="btn-secondary add-cart-btn" id="add-to-cart-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                    <span>ADD TO CART</span>
+                  <button class="btn-amazon-orange add-cart-btn" id="add-to-cart-btn">
+                    <span>Add to Cart</span>
                   </button>
-                  <button class="btn-primary buy-now-btn" id="buy-now-btn">
-                    <span>BUY NOW</span>
+                  <button class="btn-amazon-yellow buy-now-btn" id="buy-now-btn">
+                    <span>Buy Now</span>
                   </button>
                 </div>
               </div>
@@ -253,65 +304,70 @@
         <div class="modal-backdrop hidden" id="checkout-backdrop">
           <div class="checkout-modal" id="checkout-modal">
             <button class="sheet-close-btn" id="close-checkout-btn">&times;</button>
-            
+
             <!-- STAGE 1: ORDER SUMMARY -->
             <div class="checkout-stage" id="checkout-stage-summary">
               <div class="checkout-header">
-                <h3>🛒 ORDER SUMMARY</h3>
-                <span class="checkout-sub">Review your item and confirm details</span>
+                <h3>📦 ORDER SUMMARY</h3>
+                <span class="checkout-sub">Amazon Express Checkout</span>
               </div>
 
               <div class="summary-items-container" id="checkout-items-list">
-                <!-- Dynamically populated checkout items -->
+                <!-- Dynamically populated items -->
               </div>
 
               <div class="shipping-info-card">
                 <div class="shipping-row">
-                  <span>Shipping Method</span>
-                  <span class="shipping-badge">FREE Express (3-5 Days)</span>
+                  <span>Shipping Speed</span>
+                  <span class="shipping-badge">FREE One-Day Express</span>
                 </div>
                 <div class="shipping-row">
-                  <span>Paper Stock & Packaging</span>
-                  <span class="shipping-val">Protective Hard Tube</span>
+                  <span>Delivery Address</span>
+                  <span class="shipping-val">Select Address (Express Direct)</span>
                 </div>
               </div>
 
               <div class="order-total-card">
                 <div class="total-row">
-                  <span>Subtotal</span>
+                  <span>Items Subtotal</span>
                   <span id="checkout-subtotal">$0.00</span>
                 </div>
                 <div class="total-row">
-                  <span>Estimated Tax & Shipping</span>
+                  <span>Shipping & Handling</span>
                   <span class="free-text">FREE</span>
                 </div>
                 <div class="total-row grand-total">
-                  <span>Total Amount</span>
+                  <span>Order Total</span>
                   <span id="checkout-total">$0.00</span>
                 </div>
               </div>
 
               <div class="checkout-actions">
-                <button class="btn-primary confirm-order-btn" id="confirm-order-btn">
-                  <span>CONFIRM ORDER</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <button class="btn-amazon-yellow confirm-order-btn" id="confirm-order-btn">
+                  <span>Place Your Order</span>
                 </button>
               </div>
             </div>
 
-            <!-- STAGE 2: ORDER CONFIRMED -->
+            <!-- STAGE 2: ORDER CONFIRMED WITH BIG POSTER DISPLAY -->
             <div class="checkout-stage hidden" id="checkout-stage-confirmed">
               <div class="success-animation-box">
                 <div class="checkmark-circle">
                   <svg class="checkmark-svg" viewBox="0 0 52 52">
-                    <circle class="checkmark-circle-bg" cx="26" cy="26" r="23" fill="none"/>
-                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    <circle class="checkmark-circle-bg" cx="26" cy="26" r="23" fill="none" />
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                   </svg>
                 </div>
               </div>
 
               <h2 class="confirmed-title">✓ ORDER CONFIRMED</h2>
-              <p class="confirmed-sub">Thank you for your order! Your poster artwork is being prepared for dispatch.</p>
+              <p class="confirmed-sub">Your order is confirmed! Your poster is now unlocked in full view.</p>
+
+              <!-- BIG POSTER IMAGE SHOWCASE -->
+              <div class="big-poster-container" id="big-poster-container">
+                <span class="big-poster-badge">👑 UNLOCKED & OWNED</span>
+                <img src="" alt="Purchased Poster Artwork" id="confirmed-large-img" class="big-poster-img">
+              </div>
 
               <div class="receipt-card">
                 <div class="receipt-row">
@@ -319,7 +375,7 @@
                   <span class="receipt-val order-id-highlight" id="confirmed-order-id">#PST-894210</span>
                 </div>
                 <div class="receipt-row">
-                  <span class="receipt-label">Poster Artwork</span>
+                  <span class="receipt-label">Poster Title</span>
                   <span class="receipt-val" id="confirmed-poster-name">Poster Title</span>
                 </div>
                 <div class="receipt-row">
@@ -328,12 +384,12 @@
                 </div>
                 <div class="receipt-row">
                   <span class="receipt-label">Estimated Delivery</span>
-                  <span class="receipt-val" id="confirmed-delivery">Aug 22 - Aug 24</span>
+                  <span class="receipt-val" id="confirmed-delivery">Tomorrow by 8 PM</span>
                 </div>
               </div>
 
               <div class="checkout-actions">
-                <button class="btn-primary continue-shopping-btn" id="continue-shopping-btn">
+                <button class="btn-amazon-yellow continue-shopping-btn" id="continue-shopping-btn">
                   <span>Continue Shopping</span>
                 </button>
               </div>
@@ -350,7 +406,7 @@
 
             <div class="sheet-content">
               <div class="cart-header">
-                <h2>🛒 Your Shopping Cart</h2>
+                <h2>🛒 Shopping Cart</h2>
                 <span class="cart-item-count" id="cart-sheet-count">0 items</span>
               </div>
 
@@ -359,19 +415,18 @@
               </div>
 
               <div class="cart-empty-view hidden" id="cart-empty-view">
-                <div class="cart-empty-icon">🛍️</div>
-                <h3>Your cart is empty</h3>
-                <p>Browse our collection and add your favorite poster prints.</p>
+                <div class="cart-empty-icon">🛒</div>
+                <h3>Your Amazon Cart is empty</h3>
+                <p>Tap any blurred poster card to unlock and add to cart.</p>
               </div>
 
               <div class="cart-footer" id="cart-footer">
                 <div class="cart-total-box">
-                  <span class="total-label">Total Amount</span>
+                  <span class="total-label">Subtotal</span>
                   <span class="cart-grand-total" id="cart-grand-total">$0.00</span>
                 </div>
-                <button class="btn-primary proceed-checkout-btn" id="proceed-cart-checkout-btn">
-                  <span>PROCEED TO CHECKOUT</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <button class="btn-amazon-yellow proceed-checkout-btn" id="proceed-cart-checkout-btn">
+                  <span>Proceed to Checkout</span>
                 </button>
               </div>
             </div>
@@ -386,25 +441,25 @@
 
             <div class="sheet-content">
               <div class="profile-card">
-                <div class="profile-avatar">🖼️</div>
+                <div class="profile-avatar">📦</div>
                 <div class="profile-info">
-                  <h3>Poster Collector</h3>
-                  <span class="profile-badge">VIP Art Lover</span>
+                  <h3>Hello, Poster Collector</h3>
+                  <span class="profile-badge">Prime Member</span>
                 </div>
               </div>
 
               <div class="profile-stats-grid">
                 <div class="stat-card">
                   <span class="stat-number" id="stat-orders-count">0</span>
-                  <span class="stat-label">Orders Placed</span>
+                  <span class="stat-label">Your Orders</span>
                 </div>
                 <div class="stat-card">
                   <span class="stat-number">8</span>
-                  <span class="stat-label">Wishlist Items</span>
+                  <span class="stat-label">Saved Items</span>
                 </div>
               </div>
 
-              <div class="profile-section-title">📦 Recent Orders History</div>
+              <div class="profile-section-title">📦 Order History</div>
               <div class="order-history-list" id="order-history-list">
                 <!-- Dynamically populated order history -->
               </div>
@@ -421,4 +476,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
