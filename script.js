@@ -416,7 +416,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const posterId = btn.dataset.id;
-          revealedPostersSet.add(posterId);
+          const isMystery = posterId === 'p7' || posterId === 'p_mystery';
+          if (!isMystery) {
+            revealedPostersSet.add(posterId);
+          }
           renderPosterGrid();
           renderFeaturedPosters();
           addToCart(posterId, 1);
@@ -426,8 +429,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handlePosterTap(posterId) {
+    const isMystery = posterId === 'p7' || posterId === 'p_mystery';
     const isAlreadyRevealed = revealedPostersSet.has(posterId);
-    if (!isAlreadyRevealed) {
+
+    if (isMystery && !isAlreadyRevealed) {
+      // Mystery Poster stays locked/blurred on tap until order confirmation!
+      openPosterDetails(posterId);
+    } else if (!isAlreadyRevealed) {
       revealedPostersSet.add(posterId);
       renderPosterGrid();
       renderFeaturedPosters();
@@ -526,7 +534,13 @@ document.addEventListener('DOMContentLoaded', () => {
     activeDetailPoster = poster;
     detailQuantity = 1;
 
+    const isRevealed = revealedPostersSet.has(posterId);
     detailImg.src = poster.image;
+    if (!isRevealed) {
+      detailImg.classList.add('card-blurred');
+    } else {
+      detailImg.classList.remove('card-blurred');
+    }
     detailTitle.textContent = poster.title;
     detailCategory.textContent = poster.category;
     detailStars.textContent = getStarString(poster.rating);
