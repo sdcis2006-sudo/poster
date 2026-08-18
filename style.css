@@ -1235,8 +1235,88 @@ html, body {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.toast-fade { animation: toast-out 0.3s forwards ease; }
-@keyframes toast-out { to { opacity: 0; transform: translateY(-8px); } }
+/* ==========================================================================
+   AMAZON DESKTOP PAGINATION BAR (3 POSTERS AT A TIME, NEXT SHOWS NEXT 3)
+   ========================================================================== */
+
+.amazon-pagination-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 16px 0 20px;
+}
+
+.amazon-pagination-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.pagination-arrow-btn {
+  background: #febd69;
+  color: #0f1111;
+  border: none;
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-arrow-btn:hover:not(:disabled) {
+  background: #f7ca00;
+  transform: translateY(-1px);
+}
+
+.pagination-arrow-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.1);
+  color: #888;
+}
+
+.page-numbers-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-num-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 0.82rem;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.page-num-btn:hover {
+  border-color: #febd69;
+  color: #febd69;
+}
+
+.page-num-btn.active {
+  background: #febd69;
+  color: #0f1111;
+  border-color: #febd69;
+  font-weight: 800;
+}
 
 /* ==========================================================================
    MOBILE MEDIA QUERY (PHONE SIZE VIEW - max-width: 767px)
