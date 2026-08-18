@@ -535,11 +535,15 @@ document.addEventListener('DOMContentLoaded', () => {
     detailQuantity = 1;
 
     const isRevealed = revealedPostersSet.has(posterId);
+    const detailBlurOverlay = document.getElementById('detail-blur-overlay');
+
     detailImg.src = poster.image;
     if (!isRevealed) {
       detailImg.classList.add('card-blurred');
+      if (detailBlurOverlay) detailBlurOverlay.classList.remove('hidden-overlay');
     } else {
       detailImg.classList.remove('card-blurred');
+      if (detailBlurOverlay) detailBlurOverlay.classList.add('hidden-overlay');
     }
     detailTitle.textContent = poster.title;
     detailCategory.textContent = poster.category;

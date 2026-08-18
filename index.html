@@ -328,9 +328,13 @@
             <button class="sheet-close-btn" id="close-detail-btn" aria-label="Close modal">&times;</button>
 
             <div class="sheet-content">
-              <div class="detail-image-box">
+              <div class="detail-image-box" id="detail-image-box">
                 <img src="" alt="Poster Details" id="detail-img">
                 <span class="detail-category-badge" id="detail-category">Category</span>
+                <div class="card-blur-overlay hidden-overlay" id="detail-blur-overlay">
+                  <div class="card-lock-badge">🔒</div>
+                  <span class="card-blur-text">🔒 Locked Mystery Poster (Order to Reveal)</span>
+                </div>
               </div>
 
               <div class="detail-info-box">
