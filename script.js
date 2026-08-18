@@ -164,17 +164,17 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'p7',
-      title: 'RETRO WAVE - Sunset Boulevard 80s Synthwave Anime Poster',
+      title: '🔒 MYSTERY POSTER - Limited Secret Edition Artwork',
       category: 'Anime',
-      price: 20.99,
-      originalPrice: 27.99,
-      discount: '-25%',
-      badge: 'Best Seller',
-      rating: 4.8,
-      reviews: 1300,
+      price: 149.99,
+      originalPrice: 249.99,
+      discount: '-40%',
+      badge: '🔒 Mystery Choice',
+      rating: 5.0,
+      reviews: 3800,
       image: 'posters/poster7.jpg',
-      featured: false,
-      description: 'Nostalgic 80s synthwave anime aesthetic poster. Features glowing digital grids, palm silhouettes, and iconic retro neon color gradients.'
+      featured: true,
+      description: '✨ SPECIAL SECRET MYSTERY POSTER ✨ Limited Collector Edition Artwork. Tap card to unlock and reveal full artwork.'
     },
     {
       id: 'p8',
@@ -262,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Initialize with all posters revealed except the penultimate (last-but-one) mystery poster
+  // Initialize with all posters revealed except mystery posters (p7 & p_mystery)
   const revealedPostersSet = new Set(
     postersData
-      .filter((_, index) => index !== postersData.length - 2)
+      .filter(p => p.id !== 'p7' && p.id !== 'p_mystery')
       .map(p => p.id)
   );
 
