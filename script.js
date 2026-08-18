@@ -233,6 +233,20 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'Hyper-detailed futuristic Tokyo streetscape illuminated with holographic neon signs and atmospheric night reflections.'
     },
     {
+      id: 'p_mystery',
+      title: '🔒 MYSTERY POSTER - Shreedevi College Nexora 26 Freshers Party Edition',
+      category: 'Art',
+      price: 149.99,
+      originalPrice: 249.99,
+      discount: '-40%',
+      badge: '🔒 Mystery Choice',
+      rating: 5.0,
+      reviews: 4800,
+      image: 'posters/nexora_mystery.jpg',
+      featured: true,
+      description: '✨ SPECIAL SECRET MYSTERY POSTER ✨ Shreedevi College of Information Science Mangalore Nexora 26 Freshers Party Limited Edition Poster. Tap card to unlock and reveal full artwork.'
+    },
+    {
       id: 'p12',
       title: 'CELESTIAL COSMOS - Limited Gold Foil Astronomical Chart Print',
       category: 'Sci-Fi',
@@ -248,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Initialize with all posters revealed except the penultimate poster
+  // Initialize with all posters revealed except the penultimate (last-but-one) mystery poster
   const revealedPostersSet = new Set(
     postersData
       .filter((_, index) => index !== postersData.length - 2)
