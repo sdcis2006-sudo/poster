@@ -119,10 +119,66 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'posters/poster8.jpg',
       featured: true,
       description: '✨ SPECIAL LIMITED COLLECTOR EDITION ✨ Breathtaking cosmic artwork depicting deep space nebulae, celestial magic, and sci-fi grandeur. Printed with metallic sheen foil accents.'
+    },
+    {
+      id: 'p9',
+      title: 'SPIDER-MAN MULTIVERSE - Comic Book Vintage Wall Art Print',
+      category: 'Movies',
+      price: 23.99,
+      originalPrice: 31.99,
+      discount: '-25%',
+      badge: 'Popular Pick',
+      rating: 4.9,
+      reviews: 1850,
+      image: 'posters/poster3.jpg',
+      featured: true,
+      description: 'Dynamic superhero comic art print capturing high action Spider-Man multiverse aesthetic. Vibrant colors on heavyweight archival poster paper.'
+    },
+    {
+      id: 'p10',
+      title: 'DOWNTOWN Y2K GRUNGE - Aesthetic Music Theme Wall Decor',
+      category: 'Music',
+      price: 19.99,
+      originalPrice: 25.99,
+      discount: '-23%',
+      badge: 'Trending Pick',
+      rating: 4.8,
+      reviews: 940,
+      image: 'posters/poster5.jpg',
+      featured: false,
+      description: 'Nostalgic Y2K grunge aesthetic collage poster print. Perfect wall art decor for bedrooms, college dorms, and music studios.'
+    },
+    {
+      id: 'p11',
+      title: 'CYBER CITY NIGHTS - Neon Tokyo Skyline Architecture Art Print',
+      category: 'Gaming',
+      price: 27.99,
+      originalPrice: 36.99,
+      discount: '-24%',
+      badge: 'Amazon Choice',
+      rating: 4.9,
+      reviews: 1520,
+      image: 'posters/poster1.jpg',
+      featured: false,
+      description: 'Hyper-detailed futuristic Tokyo streetscape illuminated with holographic neon signs and atmospheric night reflections.'
+    },
+    {
+      id: 'p12',
+      title: 'CELESTIAL COSMOS - Limited Gold Foil Astronomical Chart Print',
+      category: 'Sci-Fi',
+      price: 31.99,
+      originalPrice: 42.99,
+      discount: '-26%',
+      badge: 'Collector Choice',
+      rating: 5.0,
+      reviews: 2400,
+      image: 'posters/poster8.jpg',
+      featured: false,
+      description: 'Exquisite deep space star map and celestial chart print featuring gold foil accents on dark midnight blue paper stock.'
     }
   ];
 
-  // Initialize with all posters revealed except the last-but-one (penultimate) poster
+  // Initialize with all posters revealed except the penultimate poster
   const revealedPostersSet = new Set(
     postersData
       .filter((_, index) => index !== postersData.length - 2)
