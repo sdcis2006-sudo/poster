@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p_onam1',
       title: 'ONAM FESTIVAL CELEBRATION - College Event Cultural Poster Art',
       category: 'Art',
-      price: 21.99,
-      originalPrice: 29.99,
-      discount: '-27%',
+      price: 1899,
+      originalPrice: 2499,
+      discount: '-24%',
       badge: 'New Arrival',
       rating: 4.9,
       reviews: 450,
@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p_onam2',
       title: 'ONAM 2025 SPECIAL EDITION - Traditional Kerala Festival Art Print',
       category: 'Art',
-      price: 24.99,
-      originalPrice: 32.99,
-      discount: '-24%',
+      price: 2199,
+      originalPrice: 2999,
+      discount: '-26%',
       badge: 'Best Seller',
       rating: 5.0,
       reviews: 820,
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p_onam3',
       title: 'ONAM CULTURAL HERITAGE - Expressive Indian Festival Wall Decor',
       category: 'Art',
-      price: 19.99,
-      originalPrice: 26.99,
+      price: 1499,
+      originalPrice: 1999,
       discount: '-25%',
       badge: 'Overall Pick',
       rating: 4.8,
@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p_onam4',
       title: 'KERALA ONAM MAHOTSAV - Vibrant Golden Floral Celebration Print',
       category: 'Art',
-      price: 22.99,
-      originalPrice: 28.99,
-      discount: '-20%',
+      price: 1799,
+      originalPrice: 2399,
+      discount: '-25%',
       badge: 'Amazon Choice',
       rating: 4.9,
       reviews: 910,
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p_prometheus',
       title: 'PROMETHEUS MYTHOLOGY - Dark Cinematic Legend Archival Art Print',
       category: 'Movies',
-      price: 26.99,
-      originalPrice: 34.99,
-      discount: '-23%',
+      price: 2999,
+      originalPrice: 3999,
+      discount: '-25%',
       badge: 'Collector Choice',
       rating: 4.9,
       reviews: 1120,
@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p1',
       title: 'BATTLE STATION - Cyberpunk 2099 Neon Gaming Poster Art Print',
       category: 'Gaming',
-      price: 24.99,
-      originalPrice: 34.99,
+      price: 2499,
+      originalPrice: 3499,
       discount: '-28%',
       badge: 'Best Seller',
       rating: 4.9,
@@ -96,9 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p2',
       title: 'NEON VALKYRIE - Horizon Futuristic Anime Wall Art Decor',
       category: 'Anime',
-      price: 19.99,
-      originalPrice: 26.99,
-      discount: '-25%',
+      price: 1299,
+      originalPrice: 1799,
+      discount: '-27%',
       badge: 'Overall Pick',
       rating: 4.8,
       reviews: 980,
@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p3',
       title: 'DARK CINEMA - Legacy Edition Archival Cinema Movie Poster',
       category: 'Movies',
-      price: 22.99,
-      originalPrice: 29.99,
-      discount: '-23%',
+      price: 1999,
+      originalPrice: 2699,
+      discount: '-25%',
       badge: 'Amazon Choice',
       rating: 4.9,
       reviews: 2100,
@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p4',
       title: 'MATCHDAY LEGEND - Golden Edition Sports Stadium Art Print',
       category: 'Football',
-      price: 18.99,
-      originalPrice: 24.99,
-      discount: '-24%',
+      price: 1499,
+      originalPrice: 1999,
+      discount: '-25%',
       badge: '#1 Trending',
       rating: 4.7,
       reviews: 760,
@@ -138,9 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p5',
       title: 'FRESHERS FESTIVAL - Underground Sound Concert Event Poster',
       category: 'Music',
-      price: 21.99,
-      originalPrice: 28.99,
-      discount: '-24%',
+      price: 1699,
+      originalPrice: 2299,
+      discount: '-26%',
       badge: 'Popular Pick',
       rating: 4.8,
       reviews: 840,
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p6',
       title: 'ETHEREAL ABSTRACT - Studio Edition Fine Art Wall Decor',
       category: 'Art',
-      price: 26.99,
-      originalPrice: 35.99,
+      price: 2299,
+      originalPrice: 3099,
       discount: '-25%',
       badge: 'Top Rated',
       rating: 4.9,
@@ -166,9 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p8',
       title: 'UNIVERSE: SCI-FI CELESTIAL ARTWORK (Limited Collector Edition)',
       category: 'Sci-Fi',
-      price: 34.99,
-      originalPrice: 45.00,
-      discount: '-22%',
+      price: 3499,
+      originalPrice: 4599,
+      discount: '-24%',
       badge: 'Collector Choice',
       rating: 5.0,
       reviews: 3200,
@@ -180,9 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p9',
       title: 'SPIDER-MAN MULTIVERSE - Comic Book Vintage Wall Art Print',
       category: 'Movies',
-      price: 23.99,
-      originalPrice: 31.99,
-      discount: '-25%',
+      price: 2199,
+      originalPrice: 2899,
+      discount: '-24%',
       badge: 'Popular Pick',
       rating: 4.9,
       reviews: 1850,
@@ -194,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p10',
       title: 'DOWNTOWN Y2K GRUNGE - Aesthetic Music Theme Wall Decor',
       category: 'Music',
-      price: 19.99,
-      originalPrice: 25.99,
-      discount: '-23%',
+      price: 1599,
+      originalPrice: 2199,
+      discount: '-27%',
       badge: 'Trending Pick',
       rating: 4.8,
       reviews: 940,
@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p11',
       title: 'CYBER CITY NIGHTS - Neon Tokyo Skyline Architecture Art Print',
       category: 'Gaming',
-      price: 27.99,
-      originalPrice: 36.99,
+      price: 2799,
+      originalPrice: 3699,
       discount: '-24%',
       badge: 'Amazon Choice',
       rating: 4.9,
@@ -222,9 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p7',
       title: '🔒 MYSTERY POSTER - Limited Secret Edition Artwork',
       category: 'Anime',
-      price: 149.99,
-      originalPrice: 249.99,
-      discount: '-40%',
+      price: 10000,
+      originalPrice: 14999,
+      discount: '-33%',
       badge: '🔒 Mystery Choice',
       rating: 5.0,
       reviews: 3800,
@@ -236,9 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'p12',
       title: 'CELESTIAL COSMOS - Limited Gold Foil Astronomical Chart Print',
       category: 'Sci-Fi',
-      price: 31.99,
-      originalPrice: 42.99,
-      discount: '-26%',
+      price: 3199,
+      originalPrice: 4299,
+      discount: '-25%',
       badge: 'Collector Choice',
       rating: 5.0,
       reviews: 2400,
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="featured-overlay">
             <h3 class="featured-card-title">${poster.title}</h3>
             <div class="featured-meta">
-              <span class="featured-price">$${poster.price.toFixed(2)}</span>
+              <span class="featured-price">₹${poster.price.toLocaleString('en-IN')}</span>
               <span class="rating-val" style="color:var(--amazon-orange); font-size:0.75rem;">★ ${poster.rating}</span>
             </div>
           </div>
@@ -386,8 +386,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
               <div class="price-block">
                 <div class="price-row">
-                  <span class="current-price-symbol">$</span><span class="current-price-val">${poster.price.toFixed(2)}</span>
-                  <span class="list-price-text">M.R.P.: <span class="old-price">$${poster.originalPrice.toFixed(2)}</span></span>
+                  <span class="current-price-symbol">₹</span><span class="current-price-val">${poster.price.toLocaleString('en-IN')}</span>
+                  <span class="list-price-text">M.R.P.: <span class="old-price">₹${poster.originalPrice.toLocaleString('en-IN')}</span></span>
                   <span class="discount-badge-text">(${poster.discount || '-25%'} off)</span>
                 </div>
                 <div class="cashback-offer-text">Get 3% back with Poster Pay</div>
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
     detailRatingVal.textContent = poster.rating;
     detailReviews.textContent = `(${poster.reviews} ratings)`;
     detailDealBadge.textContent = poster.discount || '-25%';
-    detailOldPrice.textContent = `$${(poster.originalPrice || poster.price * 1.3).toFixed(2)}`;
+    detailOldPrice.textContent = `₹${(poster.originalPrice || poster.price * 1.3).toLocaleString('en-IN')}`;
     detailDesc.textContent = poster.description;
     qtyValue.textContent = detailQuantity;
     updateDetailPrice();
@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateDetailPrice() {
     if (activeDetailPoster) {
       const total = activeDetailPoster.price * detailQuantity;
-      detailPrice.textContent = `$${total.toFixed(2)}`;
+      detailPrice.textContent = `₹${total.toLocaleString('en-IN')}`;
     }
   }
 
@@ -715,7 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${poster.image}" alt="${poster.title}" class="cart-item-img">
             <div class="cart-item-info">
               <h4 class="cart-item-title">${poster.title}</h4>
-              <span class="cart-item-price">$${poster.price.toFixed(2)}</span>
+              <span class="cart-item-price">₹${poster.price.toLocaleString('en-IN')}</span>
             </div>
             <div class="cart-item-actions">
               <div class="qty-selector">
@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }).join('');
 
-      cartGrandTotal.textContent = `$${grandTotal.toFixed(2)}`;
+      cartGrandTotal.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
 
       cartItemsList.querySelectorAll('.cart-qty-minus').forEach(btn => {
         btn.addEventListener('click', () => updateCartQuantity(btn.dataset.id, -1));
@@ -804,15 +804,15 @@ document.addEventListener('DOMContentLoaded', () => {
           <img src="${item.poster.image}" alt="${item.poster.title}" class="summary-thumb">
           <div class="summary-details">
             <h4 class="summary-item-title">${item.poster.title}</h4>
-            <span class="summary-item-qty">Qty: ${item.quantity} × $${item.poster.price.toFixed(2)}</span>
+            <span class="summary-item-qty">Qty: ${item.quantity} × ₹${item.poster.price.toLocaleString('en-IN')}</span>
           </div>
-          <span class="summary-item-price">$${itemPrice.toFixed(2)}</span>
+          <span class="summary-item-price">₹${itemPrice.toLocaleString('en-IN')}</span>
         </div>
       `;
     }).join('');
 
-    checkoutSubtotal.textContent = `$${totalAmount.toFixed(2)}`;
-    checkoutTotal.textContent = `$${totalAmount.toFixed(2)}`;
+    checkoutSubtotal.textContent = `₹${totalAmount.toLocaleString('en-IN')}`;
+    checkoutTotal.textContent = `₹${totalAmount.toLocaleString('en-IN')}`;
 
     checkoutBackdrop.classList.remove('hidden');
   }
@@ -837,7 +837,7 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmedPosterName.textContent = activeCheckoutItems.length === 1 ? 
         activeCheckoutItems[0].poster.title : 
         `${activeCheckoutItems[0].poster.title} + ${activeCheckoutItems.length - 1} more`;
-      confirmedTotal.textContent = `$${totalAmount.toFixed(2)}`;
+      confirmedTotal.textContent = `₹${totalAmount.toLocaleString('en-IN')}`;
       if (confirmedDelivery) confirmedDelivery.textContent = 'Tomorrow by 8:00 PM';
 
       // Automatically UNLOCK and REVEAL all purchased posters (especially Mystery Posters)
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
       orderHistory.unshift({
         id: randomID,
         itemTitle: confirmedPosterName.textContent,
-        total: `$${totalAmount.toFixed(2)}`,
+        total: `₹${totalAmount.toLocaleString('en-IN')}`,
         date: new Date().toLocaleDateString()
       });
       saveOrderHistory();
