@@ -224,12 +224,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       posterGrid.innerHTML = filtered.map(poster => {
         const isRevealed = revealedPostersSet.has(poster.id);
+        const boughtCount = Math.floor(100 + (poster.reviews * 0.4)) + '+ bought in past month';
 
         return `
           <div class="poster-card" data-id="${poster.id}">
+            ${poster.badge ? `<div class="amazon-choice-badge-card">${poster.badge}</div>` : ''}
+
             <div class="poster-thumb-container">
               <img src="${poster.image}" alt="${poster.title}" class="poster-thumb ${isRevealed ? '' : 'card-blurred'}" loading="lazy">
-              <span class="amazon-tag-pill">${poster.badge}</span>
               ${!isRevealed ? `
                 <div class="card-blur-overlay">
                   <div class="card-lock-badge">🔒</div>
@@ -237,26 +239,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               ` : ''}
             </div>
+
             <div class="poster-details">
               <h3 class="poster-title">${poster.title}</h3>
-              
+
+              <div class="bought-count-tag">${boughtCount}</div>
+
               <div class="rating-row">
-                <span class="stars">${getStarString(poster.rating)}</span>
                 <span class="rating-val">${poster.rating}</span>
+                <span class="stars">${getStarString(poster.rating)}</span>
                 <span class="review-count">(${poster.reviews > 1000 ? (poster.reviews / 1000).toFixed(1) + 'k' : poster.reviews})</span>
               </div>
 
               <div class="price-block">
                 <div class="price-row">
-                  <span class="deal-badge">${poster.discount}</span>
-                  <span class="current-price">$${poster.price.toFixed(2)}</span>
+                  <span class="current-price-symbol">$</span><span class="current-price-val">${poster.price.toFixed(2)}</span>
+                  <span class="list-price-text">M.R.P.: <span class="old-price">$${poster.originalPrice.toFixed(2)}</span></span>
+                  <span class="discount-badge-text">(${poster.discount || '-25%'} off)</span>
                 </div>
-                <div class="list-price-row">List: <span class="old-price">$${poster.originalPrice.toFixed(2)}</span></div>
-                <div class="prime-delivery-text">✓ <b>FREE One-Day Delivery</b></div>
+                <div class="cashback-offer-text">Get 3% back with Poster Pay</div>
               </div>
 
+              <div class="bazaar-deal-pill">bazaar <span>Crazy Prices</span></div>
+
+              <div class="prime-delivery-text">✓ <b>FREE delivery</b> Tomorrow</div>
+
               <button class="btn-amazon-yellow add-to-cart-quick-btn" data-id="${poster.id}">
-                <span>Add to Cart</span>
+                <span>Add to cart</span>
               </button>
             </div>
           </div>
