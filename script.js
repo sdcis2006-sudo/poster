@@ -820,13 +820,29 @@ document.addEventListener('DOMContentLoaded', () => {
         activeCheckoutItems[0].poster.title : 
         `${activeCheckoutItems[0].poster.title} + ${activeCheckoutItems.length - 1} more`;
       confirmedTotal.textContent = `$${totalAmount.toFixed(2)}`;
-      confirmedDelivery.textContent = 'Tomorrow by 8:00 PM';
+      if (confirmedDelivery) confirmedDelivery.textContent = 'Tomorrow by 8:00 PM';
+
+      // Automatically UNLOCK and REVEAL all purchased posters (especially Mystery Posters)
+      let revealedMystery = false;
+      activeCheckoutItems.forEach(item => {
+        if (!revealedPostersSet.has(item.poster.id)) {
+          revealedPostersSet.add(item.poster.id);
+          if (item.poster.id === 'p7' || item.poster.id === 'p_mystery') {
+            revealedMystery = true;
+          }
+        }
+      });
 
       if (activeCheckoutItems.length > 0 && confirmedLargeImg) {
         confirmedLargeImg.src = activeCheckoutItems[0].poster.image;
-        revealedPostersSet.add(activeCheckoutItems[0].poster.id);
-        renderPosterGrid();
-        renderFeaturedPosters();
+        confirmedLargeImg.classList.remove('card-blurred');
+      }
+
+      renderPosterGrid();
+      renderFeaturedPosters();
+
+      if (revealedMystery) {
+        showToast('🎉 Mystery Poster Purchased & Unlocked!');
       }
 
       orderHistory.unshift({
