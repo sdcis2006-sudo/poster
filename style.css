@@ -772,6 +772,98 @@ html, body {
   border-radius: 10px;
 }
 
+/* ==========================================================================
+   MYSTERY POSTER RED HIGHLIGHTING DESIGN (HIGH-IMPACT RED ACCENT)
+   ========================================================================== */
+
+.poster-card.mystery-card-highlight {
+  border: 2px solid #ff1744 !important;
+  background: linear-gradient(180deg, #1c080e 0%, #120508 100%) !important;
+  box-shadow: 0 0 24px rgba(255, 23, 68, 0.45) !important;
+  animation: mystery-card-pulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes mystery-card-pulse {
+  0% {
+    border-color: #ff1744;
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.4);
+  }
+  100% {
+    border-color: #ff5252;
+    box-shadow: 0 0 32px rgba(255, 23, 68, 0.75);
+  }
+}
+
+.mystery-card-highlight .amazon-choice-badge-card {
+  background: #cc0c39 !important;
+  border-color: #ff5252 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  box-shadow: 0 0 12px rgba(204, 12, 57, 0.6) !important;
+}
+
+.mystery-card-highlight .poster-title {
+  color: #ff1744 !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 12px rgba(255, 23, 68, 0.6) !important;
+}
+
+.mystery-card-highlight .current-price-val,
+.mystery-card-highlight .current-price-symbol {
+  color: #ff1744 !important;
+  font-weight: 900 !important;
+  font-size: 1.35rem !important;
+  text-shadow: 0 0 12px rgba(255, 23, 68, 0.5) !important;
+}
+
+.mystery-card-highlight .bazaar-deal-pill {
+  background: #ff1744 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(255, 23, 68, 0.5) !important;
+}
+
+.mystery-card-highlight .card-lock-badge {
+  background: #ff1744 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 24px rgba(255, 23, 68, 0.9) !important;
+}
+
+.mystery-card-highlight .card-blur-text {
+  background: rgba(255, 23, 68, 0.9) !important;
+  color: #ffffff !important;
+  border: 1px solid #ff5252 !important;
+}
+
+.mystery-card-highlight .btn-amazon-yellow {
+  background: linear-gradient(135deg, #ff1744 0%, #cc0c39 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #ff5252 !important;
+  box-shadow: 0 4px 14px rgba(255, 23, 68, 0.4) !important;
+}
+.mystery-card-highlight .btn-amazon-yellow:hover {
+  background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%) !important;
+}
+
+/* MYSTERY MODAL HIGHLIGHT */
+.bottom-sheet.mystery-modal-highlight {
+  border: 2px solid #ff1744 !important;
+  box-shadow: 0 0 40px rgba(255, 23, 68, 0.6) !important;
+}
+.mystery-modal-highlight .detail-title {
+  color: #ff1744 !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 12px rgba(255, 23, 68, 0.6) !important;
+}
+.mystery-modal-highlight .current-price {
+  color: #ff1744 !important;
+  font-size: 1.6rem !important;
+  font-weight: 900 !important;
+}
+.mystery-modal-highlight .amazon-choice-tag {
+  background: #cc0c39 !important;
+  color: #ffffff !important;
+}
+
 .amazon-tag-pill {
   position: absolute;
   top: 10px;

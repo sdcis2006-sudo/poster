@@ -357,10 +357,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       posterGrid.innerHTML = filtered.map(poster => {
         const isRevealed = revealedPostersSet.has(poster.id);
+        const isMystery = poster.id === 'p7' || poster.id === 'p_mystery';
         const boughtCount = Math.floor(100 + (poster.reviews * 0.4)) + '+ bought in past month';
 
         return `
-          <div class="poster-card" data-id="${poster.id}">
+          <div class="poster-card ${isMystery ? 'mystery-card-highlight' : ''}" data-id="${poster.id}">
             ${poster.badge ? `<div class="amazon-choice-badge-card">${poster.badge}</div>` : ''}
 
             <div class="poster-thumb-container">
@@ -535,7 +536,17 @@ document.addEventListener('DOMContentLoaded', () => {
     detailQuantity = 1;
 
     const isRevealed = revealedPostersSet.has(posterId);
+    const isMystery = poster.id === 'p7' || poster.id === 'p_mystery';
     const detailBlurOverlay = document.getElementById('detail-blur-overlay');
+    const detailSheet = document.getElementById('detail-sheet');
+
+    if (detailSheet) {
+      if (isMystery) {
+        detailSheet.classList.add('mystery-modal-highlight');
+      } else {
+        detailSheet.classList.remove('mystery-modal-highlight');
+      }
+    }
 
     detailImg.src = poster.image;
     if (!isRevealed) {
