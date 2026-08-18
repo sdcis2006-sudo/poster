@@ -322,17 +322,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Render Main Poster Grid (3 Posters at a time on Desktop, Next 3 on Next click)
+  // Render Main Poster Grid (Scrollable 3-Column Grid on Desktop, 1-Column on Mobile)
   const posterGrid = document.getElementById('poster-grid');
   const resultsCount = document.getElementById('results-count');
   const emptyState = document.getElementById('empty-state');
   const paginationContainer = document.getElementById('pagination-container');
 
-  let currentPage = 1;
-  const postersPerPage = 3;
-
   function renderPosterGrid() {
     if (!posterGrid) return;
+
+    if (paginationContainer) {
+      paginationContainer.style.display = 'none';
+    }
 
     const filtered = postersData.filter(poster => {
       const matchesCategory = (activeCategory === 'All' || 
@@ -343,37 +344,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchesCategory && matchesSearch;
     });
 
-    const isDesktop = window.innerWidth >= 768;
-    const totalPages = Math.max(1, Math.ceil(filtered.length / postersPerPage));
-
-    if (currentPage > totalPages) {
-      currentPage = 1;
+    if (resultsCount) {
+      resultsCount.textContent = `${filtered.length} Poster${filtered.length === 1 ? '' : 's'}`;
     }
 
     if (filtered.length === 0) {
       posterGrid.style.display = 'none';
-      if (paginationContainer) paginationContainer.style.display = 'none';
       emptyState.classList.remove('hidden');
-      if (resultsCount) resultsCount.textContent = '0 Posters';
     } else {
       posterGrid.style.display = 'grid';
       emptyState.classList.add('hidden');
 
-      let visibleItems = filtered;
-      if (isDesktop) {
-        const startIndex = (currentPage - 1) * postersPerPage;
-        visibleItems = filtered.slice(startIndex, startIndex + postersPerPage);
-        const endDisplayIndex = Math.min(startIndex + postersPerPage, filtered.length);
-        if (resultsCount) {
-          resultsCount.textContent = `Showing ${startIndex + 1}-${endDisplayIndex} of ${filtered.length} Posters (Page ${currentPage} of ${totalPages})`;
-        }
-      } else {
-        if (resultsCount) {
-          resultsCount.textContent = `${filtered.length} Poster${filtered.length === 1 ? '' : 's'}`;
-        }
-      }
-
-      posterGrid.innerHTML = visibleItems.map(poster => {
+      posterGrid.innerHTML = filtered.map(poster => {
         const isRevealed = revealedPostersSet.has(poster.id);
         const boughtCount = Math.floor(100 + (poster.reviews * 0.4)) + '+ bought in past month';
 
@@ -423,9 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }).join('');
 
-      // Render Pagination Bar for Desktop (3 at a time, Next shows Next 3)
-      renderPaginationControls(isDesktop, totalPages);
-
       posterGrid.querySelectorAll('.poster-card').forEach(card => {
         card.addEventListener('click', (e) => {
           if (e.target.closest('.add-to-cart-quick-btn')) return;
@@ -444,70 +423,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
-  }
-
-  function renderPaginationControls(isDesktop, totalPages) {
-    if (!paginationContainer) return;
-
-    if (!isDesktop || totalPages <= 1) {
-      paginationContainer.style.display = 'none';
-      return;
-    }
-
-    paginationContainer.style.display = 'flex';
-    let pagesHtml = '';
-
-    for (let i = 1; i <= totalPages; i++) {
-      pagesHtml += `<button class="page-num-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
-    }
-
-    paginationContainer.innerHTML = `
-      <div class="amazon-pagination-bar">
-        <button class="pagination-arrow-btn prev-page-btn" ${currentPage === 1 ? 'disabled' : ''} id="prev-page-btn">
-          ‹ Previous 3
-        </button>
-        <div class="page-numbers-group">${pagesHtml}</div>
-        <button class="pagination-arrow-btn next-page-btn" ${currentPage === totalPages ? 'disabled' : ''} id="next-page-btn">
-          Next 3 ›
-        </button>
-      </div>
-    `;
-
-    const prevBtn = document.getElementById('prev-page-btn');
-    const nextBtn = document.getElementById('next-page-btn');
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
-          currentPage--;
-          renderPosterGrid();
-          scrollToGridTop();
-        }
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-          currentPage++;
-          renderPosterGrid();
-          scrollToGridTop();
-        }
-      });
-    }
-
-    paginationContainer.querySelectorAll('.page-num-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentPage = parseInt(btn.dataset.page, 10);
-        renderPosterGrid();
-        scrollToGridTop();
-      });
-    });
-  }
-
-  function scrollToGridTop() {
-    const gridElem = document.getElementById('grid-title') || document.querySelector('.amazon-desktop-layout-container');
-    if (gridElem) gridElem.scrollIntoView({ behavior: 'smooth' });
   }
 
   function handlePosterTap(posterId) {
