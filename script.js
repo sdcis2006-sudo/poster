@@ -163,20 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'Contemporary abstract canvas composition with rich textures and modern neutral tones. Adds sophisticated artistic flair to modern living spaces.'
     },
     {
-      id: 'p7',
-      title: '🔒 MYSTERY POSTER - Limited Secret Edition Artwork',
-      category: 'Anime',
-      price: 149.99,
-      originalPrice: 249.99,
-      discount: '-40%',
-      badge: '🔒 Mystery Choice',
-      rating: 5.0,
-      reviews: 3800,
-      image: 'posters/poster7.jpg',
-      featured: true,
-      description: '✨ SPECIAL SECRET MYSTERY POSTER ✨ Limited Collector Edition Artwork. Tap card to unlock and reveal full artwork.'
-    },
-    {
       id: 'p8',
       title: 'UNIVERSE: SCI-FI CELESTIAL ARTWORK (Limited Collector Edition)',
       category: 'Sci-Fi',
@@ -233,18 +219,18 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'Hyper-detailed futuristic Tokyo streetscape illuminated with holographic neon signs and atmospheric night reflections.'
     },
     {
-      id: 'p_mystery',
-      title: '🔒 MYSTERY POSTER - Shreedevi College Nexora 26 Freshers Party Edition',
-      category: 'Art',
+      id: 'p7',
+      title: '🔒 MYSTERY POSTER - Limited Secret Edition Artwork',
+      category: 'Anime',
       price: 149.99,
       originalPrice: 249.99,
       discount: '-40%',
       badge: '🔒 Mystery Choice',
       rating: 5.0,
-      reviews: 4800,
-      image: 'posters/nexora_mystery.jpg',
+      reviews: 3800,
+      image: 'posters/poster7.jpg',
       featured: true,
-      description: '✨ SPECIAL SECRET MYSTERY POSTER ✨ Shreedevi College of Information Science Mangalore Nexora 26 Freshers Party Limited Edition Poster. Tap card to unlock and reveal full artwork.'
+      description: '✨ SPECIAL SECRET MYSTERY POSTER ✨ Limited Collector Edition Artwork. Tap card to unlock and reveal full artwork.'
     },
     {
       id: 'p12',
@@ -262,10 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Initialize with all posters revealed except mystery posters (p7 & p_mystery)
+  // Initialize with all posters revealed except the penultimate (last-but-one) mystery poster (poster7)
   const revealedPostersSet = new Set(
     postersData
-      .filter(p => p.id !== 'p7' && p.id !== 'p_mystery')
+      .filter((_, index) => index !== postersData.length - 2)
       .map(p => p.id)
   );
 
